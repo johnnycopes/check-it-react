@@ -1,0 +1,16 @@
+@import '../styles.scss';
+
+.form {
+  grid-row: 1;
+  grid-column: 2;
+  margin-bottom: map-get($spacing, 8);
+
+  &__input {
+    width: 80%;
+  }
+
+  &__button {
+    width: 20%;
+    background: gold;
+  }
+}

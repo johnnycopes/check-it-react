@@ -1,25 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AddTaskForm from './components/AddTaskForm';
+
+import './scss/styles.scss';
 
 class App extends Component {
+
+  state = {
+    tasks: [
+      {
+        name: 'Walk dog',
+        completed: false
+      },
+      {
+        name: 'Buy groceries',
+        completed: false
+      }
+    ]
+  };
+
+  addTask = task => {
+    const tasks = [...this.state.tasks];
+    tasks.push({
+      name: task,
+      completed: false
+    });
+    this.setState({ tasks });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="app">
+        <h1 className="header">
+          Check It!
+        </h1>
+
+        <div className="list">
+          <AddTaskForm addTask={this.addTask} />
+          <div className="tasks">
+            <div className="task">Walk dog</div>
+            <div className="task">Buy groceries</div>
+          </div>
+        </div>
       </div>
     );
   }
