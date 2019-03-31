@@ -1,0 +1,27 @@
+@import '../styles.scss';
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: map-get($spacing, 8);
+  background: skyblue;
+
+  &--completed {
+    background: darken(skyblue, 10%);
+    
+    .task__name {
+      text-decoration: line-through;
+    }
+  }
+
+  &__checkbox,
+  &__delete {
+    width: 10%;
+  }
+
+  &__delete {
+    background: darksalmon;
+    color: map-get($font-color, white)
+  }
+}

@@ -4,13 +4,14 @@ import '../scss/components/AddTaskForm.scss';
 
 class AddTaskForm extends Component {
 
-  nameRef = React.createRef();
+  state = {
+    value: ''
+  };
 
   addTask = (event) => {
     event.preventDefault();
-    const task = this.nameRef.current.value;
-    this.props.addTask(task);
-    event.currentTarget.reset();
+    this.props.addTask(this.state.value);
+    this.setState({ value: '' });
   }
 
   render() {
@@ -21,13 +22,16 @@ class AddTaskForm extends Component {
         <input className="form__input"
           name="name"
           placeholder="Any more tasks?"
-          ref={this.nameRef}
+          value={this.state.value}
+          onChange={event => this.setState({ value: event.target.value })}
         />
-        <button className="form__button">
+        <button className="form__button"
+          disabled={!this.state.value}
+          >
           Add
         </button>
       </form>
-    )
+    );
   }
 }
 

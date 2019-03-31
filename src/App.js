@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { generateUUID } from './utility';
+
 import AddTaskForm from './components/AddTaskForm';
+import Header from './components/Header';
+import Tasks from './components/Tasks';
 
 import './scss/styles.scss';
 
@@ -8,38 +12,54 @@ class App extends Component {
   state = {
     tasks: [
       {
-        name: 'Walk dog',
+        id: 0,
+        name: 'Make to-do list',
+        completed: true
+      },
+      {
+        id: 1,
+        name: 'Buy sweet potatoes',
         completed: false
       },
       {
-        name: 'Buy groceries',
+        id: 2,
+        name: 'Iron pants',
         completed: false
       }
     ]
   };
 
-  addTask = task => {
+  addTask = taskName => {
     const tasks = [...this.state.tasks];
     tasks.push({
-      name: task,
+      id: generateUUID(),
+      name: taskName,
       completed: false
     });
+    this.setState({ tasks });
+  }
+
+  updateTask = updatedTask => {
+    const tasks = [...this.state.tasks];
+    const taskToUpdateIndex = tasks.findIndex(task => task.id === updatedTask.id);
+    tasks[taskToUpdateIndex] = updatedTask;
+    this.setState({ tasks });
+  }
+
+  deleteTask = taskToDelete => {
+    const tasks = [...this.state.tasks];
+    const taskToDeleteIndex = tasks.findIndex(task => task.id === taskToDelete.id);
+    tasks.splice(taskToDeleteIndex, 1);
     this.setState({ tasks });
   }
 
   render() {
     return (
       <div className="app">
-        <h1 className="header">
-          Check It!
-        </h1>
-
+        <Header tasks={this.state.tasks} />
         <div className="list">
           <AddTaskForm addTask={this.addTask} />
-          <div className="tasks">
-            <div className="task">Walk dog</div>
-            <div className="task">Buy groceries</div>
-          </div>
+          <Tasks tasks={this.state.tasks} updateTask={this.updateTask} deleteTask={this.deleteTask} />
         </div>
       </div>
     );

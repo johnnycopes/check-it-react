@@ -7,10 +7,22 @@
 
   &__input {
     width: 80%;
+    outline: none;
+    border: map-get($spacing, 4) solid transparent;
+    padding: map-get($spacing, 12);
+
+    &:focus {
+      border-color: skyblue;
+    }
   }
 
   &__button {
     width: 20%;
     background: gold;
+
+    &:disabled {
+      background: lightgray;
+      color: gray;
+    }
   }
 }

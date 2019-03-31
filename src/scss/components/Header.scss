@@ -1,0 +1,11 @@
+@import '../styles.scss';
+
+.header {
+  color: map-get($font-color, white);
+  text-align: center;
+
+  &__title {
+    font-size: map-get($font-size, 72);
+    margin-bottom: map-get($spacing, 16);
+  }
+}
