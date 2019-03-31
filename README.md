@@ -1,6 +1,6 @@
 # Things That Work
 
-### Live site: *coming soon*
+### Live site: https://check-it-react.surge.sh
 
 #### Goals of this project:
 
