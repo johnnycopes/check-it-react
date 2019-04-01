@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import '../scss/components/Task.scss';
 const classNames = require('classnames');
 

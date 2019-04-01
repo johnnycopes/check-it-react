@@ -36,21 +36,27 @@ class App extends Component {
       name: taskName,
       completed: false
     });
-    this.setState({ tasks });
+    this.setState(() => ({
+      tasks
+    }));
   }
 
   updateTask = updatedTask => {
     const tasks = [...this.state.tasks];
     const taskToUpdateIndex = tasks.findIndex(task => task.id === updatedTask.id);
     tasks[taskToUpdateIndex] = updatedTask;
-    this.setState({ tasks });
+    this.setState(() => ({
+      tasks
+    }));
   }
 
   deleteTask = taskToDelete => {
     const tasks = [...this.state.tasks];
     const taskToDeleteIndex = tasks.findIndex(task => task.id === taskToDelete.id);
     tasks.splice(taskToDeleteIndex, 1);
-    this.setState({ tasks });
+    this.setState(() => ({
+      tasks
+    }));
   }
 
   render() {

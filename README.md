@@ -1,4 +1,4 @@
-# Things That Work
+# Check It!
 
 ### Live site: https://check-it-react.surge.sh
 

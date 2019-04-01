@@ -11,7 +11,9 @@ class AddTaskForm extends Component {
   addTask = (event) => {
     event.preventDefault();
     this.props.addTask(this.state.value);
-    this.setState({ value: '' });
+    this.setState(() => ({
+      value: ''
+    }));
   }
 
   render() {
